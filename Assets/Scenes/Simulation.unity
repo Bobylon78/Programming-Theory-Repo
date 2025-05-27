@@ -699,7 +699,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 45.2}
-  m_LocalScale: {x: 11.237309, y: 11.237309, z: 11.237309}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -711,19 +711,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644962458}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5d178b839108c64abd618c0509e9627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nom: Terre
-  masse: 0
+  masse: 5.972
   rayon: 0
   ditanceOrbitalAU: 10
   angle: 0
   couleur: 
-  vitesseOrbital: 36.525
-  vitesseRotation: 24
+  vitesseOrbital: 0
+  vitesseRotation: 0
   type: Tellurique
   centreOrbital: {fileID: 1741752122}
   prefab: {fileID: 0}
@@ -1252,10 +1252,10 @@ MonoBehaviour:
   nom: Lune
   masse: 0
   rayon: 0
-  ditanceOrbitalAU: 0.2
+  ditanceOrbitalAU: 0.26
   angle: 0
   couleur: 
-  vitesseOrbital: 273
+  vitesseOrbital: 0
   vitesseRotation: 0
   type: Satellite Terre
   centreOrbital: {fileID: 644962462}
@@ -1344,7 +1344,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 72}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1917,7 +1917,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 21.868, y: 21.868, z: 21.868}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
