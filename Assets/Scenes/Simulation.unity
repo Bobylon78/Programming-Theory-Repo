@@ -172,7 +172,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.990566, g: 0.973516, b: 0.62144, a: 1}
   m_Intensity: 100000
-  m_Range: 5068.327
+  m_Range: 18032.082
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -856,7 +856,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: cb712a849fa61f04491b964004775016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1199,7 +1199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: 799dd20650d5e734ebdc700c6af3b87d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37161,7 +37161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: cb501b69f3cb36a4eb163b02cbe6c8ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37414,7 +37414,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: 0a186c5784e7326408297bb0f4795543, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37546,7 +37546,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: dd9fdb5ebbd28a445a01827636ca0e06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72279,7 +72279,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.9703, y: 2.9703, z: 2.9703}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72672,7 +72672,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: 085f666569d567345a6966a22e7eece3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72804,7 +72804,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8023dd669f5dade43a162276fdd04a4c, type: 2}
+  - {fileID: 2100000, guid: 1f8ba4ad95ac5ce478522f9153fb2665, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73017,7 +73017,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 1
-  far clip plane: 15000
+  far clip plane: 16000
   field of view: 60
   orthographic: 0
   orthographic size: 5
