@@ -6,6 +6,13 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public Camera mainCamera;
+    public Transform currentTarget;
+    public float zoomDistance = 1f;
+    public float zoomSpeed = 1f;
+    public Vector3 offsetDirection = new Vector3(1f, 0.5f, -1f);
+    private Vector3 targetPosition;
+    public bool isZooming = false;
+
     public GameObject panelInfo;
     public TMP_Text nomText;
     public TMP_Text masseText;
@@ -17,18 +24,22 @@ public class UIManager : MonoBehaviour
 
     private Astre astreSelectionne;
 
-    public float zoomDistance = 1f;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+      
+        
     }
-
     // Update is called once per frame
     void Update()
     {
+        if (isZooming)
+        {
+            mainCamera.transform.position = Vector3.Lerp(targetPosition, targetPosition, zoomSpeed *Time.deltaTime);
+            mainCamera.transform.LookAt(currentTarget);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -39,11 +50,23 @@ public class UIManager : MonoBehaviour
                 Astre astre = hit.collider.GetComponent<Astre>();
                 if (astre != null)
                 {
+                    ZoomToAstre(astre.transform);
                     AfficherInfo(astre);
+
                 }
             }
         }
     }
+    public void ZoomToAstre (Transform astre)
+    {
+        Debug.Log("ALERTE");
+        currentTarget = astre;
+        Vector3 offset = offsetDirection.normalized * zoomDistance;
+        targetPosition = astre.position + offset;
+        isZooming = true;
+    }
+        
+
     public void AfficherInfo(Astre astre)
     {
         astreSelectionne = astre;
