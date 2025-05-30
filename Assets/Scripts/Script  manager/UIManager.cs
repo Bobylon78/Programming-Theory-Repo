@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -21,6 +22,8 @@ public class UIManager : MonoBehaviour
     public TMP_Text vitesseOrbitalText;
     public TMP_Text vitesseRotationText;
     public TMP_Text typeText;
+    public TMP_Dropdown dropdownAstres;
+    public List<Astre> tousLesAstres;
 
     private Astre astreSelectionne;
 
@@ -28,7 +31,14 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        List<string> noms = new List<string>();
+        foreach ( Astre astre in tousLesAstres )
+        {
+            noms.Add(astre.Nom);
+        }
+        dropdownAstres.ClearOptions();
+        dropdownAstres.AddOptions(noms);
+        dropdownAstres.onValueChanged.AddListener(SelectionDropdownAstre);
       
         
     }
@@ -59,13 +69,23 @@ public class UIManager : MonoBehaviour
     }
     public void ZoomToAstre (Transform astre)
     {
-        Debug.Log("ALERTE");
         currentTarget = astre;
         Vector3 offset = offsetDirection.normalized * zoomDistance;
         targetPosition = astre.position + offset;
         isZooming = true;
     }
-        
+    public void SelectionDropdownAstre(int index)
+    {
+        if(index >= 0 && index < tousLesAstres.Count)
+        {
+            Astre astre = tousLesAstres[index];
+            ZoomToAstre(astre.transform);
+            Debug.Log(astre.name+"ALERTE");
+            AfficherInfo(astre);
+        }
+    }
+
+
 
     public void AfficherInfo(Astre astre)
     {
@@ -73,11 +93,11 @@ public class UIManager : MonoBehaviour
         panelInfo.SetActive(true);
         nomText.text = astre.Nom;
         masseText.text = "Masse : " + astre.Masse + "kg";
-        rayonText.text = "Diamètre : " + (astre.Rayon*2) + "km";
+        rayonText.text = "Equateur : " + (astre.Diametre + "km");
         colorText.text = "Couleur : " + astre.Couleur;
-        vitesseOrbitalText.text = "Révolution Orbital : " + astre.VitesseOrbital + "Jours/Année" ;
-        vitesseRotationText.text = "Rotation : " + astre.VitesseRotation + "Heures/Jours";
-        typeText.text = astre.Type;
+        vitesseOrbitalText.text = "Révolution Orbital : " + astre.VitesseOrbitalReel ;
+        vitesseRotationText.text = "Rotation : " + astre.VitesseRotationReel;
+        typeText.text = "Type : " + astre.Type;
     }
 
 
