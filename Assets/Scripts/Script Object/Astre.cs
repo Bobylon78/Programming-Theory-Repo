@@ -4,6 +4,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Astre : MonoBehaviour
 {
+    //HERITAGE
     [SerializeField] private string nom;
     [SerializeField] private string masse;
     [SerializeField] private string diametre;

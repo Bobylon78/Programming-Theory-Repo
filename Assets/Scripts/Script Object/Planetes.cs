@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Planetes : Astre
 {
-    
+    // ENCAPSULATION
     public override void Rotate()
     {
         base.Rotate();
