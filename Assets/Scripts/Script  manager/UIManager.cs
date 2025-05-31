@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,11 +7,15 @@ public class UIManager : MonoBehaviour
 {
     public Camera mainCamera;
     public Transform currentTarget;
+    public Transform pivotPoint;
     public float zoomDistance = 1f;
     public float zoomSpeed = 1f;
+    public float rotationSpeed = 50f;
     public Vector3 offsetDirection = new Vector3(1f, 0.5f, -1f);
     private Vector3 targetPosition;
     public bool isZooming = false;
+    public Transform initPositionPoint;
+    public GameObject buttonRetour;
 
     public GameObject panelInfo;
     public TMP_Text nomText;
@@ -32,22 +35,24 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         List<string> noms = new List<string>();
-        foreach ( Astre astre in tousLesAstres )
+        foreach (Astre astre in tousLesAstres)
         {
             noms.Add(astre.Nom);
         }
         dropdownAstres.ClearOptions();
         dropdownAstres.AddOptions(noms);
         dropdownAstres.onValueChanged.AddListener(SelectionDropdownAstre);
-      
-        
+
+
     }
     // Update is called once per frame
     void Update()
     {
+
+        RotationCamera();
         if (isZooming)
         {
-            mainCamera.transform.position = Vector3.Lerp(targetPosition, targetPosition, zoomSpeed *Time.deltaTime);
+            mainCamera.transform.position = Vector3.Lerp(targetPosition, targetPosition, zoomSpeed * Time.deltaTime);
             mainCamera.transform.LookAt(currentTarget);
         }
         if (Input.GetMouseButtonDown(0))
@@ -66,21 +71,46 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        if (buttonRetour != null)
+        {
+            buttonRetour.SetActive(isZooming);
+        }
     }
-    public void ZoomToAstre (Transform astre)
+    void RotationCamera()
+    {
+        pivotPoint.position = currentTarget.position;
+        float horizontalInput = 0f;
+        if (Input.GetKey(KeyCode.A))
+
+            horizontalInput = -1f;
+
+        else if (Input.GetKey(KeyCode.D))
+            horizontalInput = 1f;
+        if (horizontalInput != 0f)
+        {
+            pivotPoint.Rotate(Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
+            Debug.Log("ALEZRTE");
+        }
+
+    }
+    public void ZoomToAstre(Transform astre)
     {
         currentTarget = astre;
+        pivotPoint.position = currentTarget.position;
+        pivotPoint.transform.SetParent(astre);
+        mainCamera.transform.SetParent(null);
         Vector3 offset = offsetDirection.normalized * zoomDistance;
         targetPosition = astre.position + offset;
+        mainCamera.transform.localPosition = offset;
+        mainCamera.transform.LookAt(pivotPoint.position);
         isZooming = true;
     }
     public void SelectionDropdownAstre(int index)
     {
-        if(index >= 0 && index < tousLesAstres.Count)
+        if (index >= 0 && index < tousLesAstres.Count)
         {
             Astre astre = tousLesAstres[index];
             ZoomToAstre(astre.transform);
-            Debug.Log(astre.name+"ALERTE");
             AfficherInfo(astre);
         }
     }
@@ -95,10 +125,25 @@ public class UIManager : MonoBehaviour
         masseText.text = "Masse : " + astre.Masse + "kg";
         rayonText.text = "Equateur : " + (astre.Diametre + "km");
         colorText.text = "Couleur : " + astre.Couleur;
-        vitesseOrbitalText.text = "Révolution Orbital : " + astre.VitesseOrbitalReel ;
+        vitesseOrbitalText.text = "Révolution Orbital : " + astre.VitesseOrbitalReel;
         vitesseRotationText.text = "Rotation : " + astre.VitesseRotationReel;
         typeText.text = "Type : " + astre.Type;
     }
 
+    public void RetourZoom()
+    {
+        if (initPositionPoint != null)
+        {
+            mainCamera.transform.SetParent(null);
+            mainCamera.transform.position = initPositionPoint.position;
+            mainCamera.transform.rotation = initPositionPoint.rotation;
+            pivotPoint.transform.SetParent(GameObject.Find("Vénus").transform);
+            mainCamera.transform.SetParent(pivotPoint);
+            isZooming = false;
+            currentTarget = GameObject.Find("Vénus").transform;
+            buttonRetour.SetActive(false);
+            panelInfo.SetActive(false);
+        }
+    }
 
 }

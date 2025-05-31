@@ -37,6 +37,7 @@ public class MyScaneManager : MonoBehaviour
         if(simulationLoopClip != null)
         {
             audioSource.clip = simulationLoopClip;
+            audioSource.loop = true;
             audioSource.Play();
         }
     }
